@@ -54,7 +54,7 @@ window.renderStatistics = function (ctx, players, times) {
     if (height < BAR_HEIGHT) {
       y = BAR_HEIGHT - height;
     }
-    ctx.fillText(Math.round(times[i]), CLOUD_X + GAP + i * (BAR_GAP + TEXT_WIDTH), textHeight + y + GAP/2);
+    ctx.fillText(Math.round(times[i]), CLOUD_X + GAP + i * (BAR_GAP + TEXT_WIDTH), textHeight + y + GAP / 2);
     ctx.fillRect(CLOUD_X + GAP + i * (BAR_GAP + TEXT_WIDTH), CLOUD_Y + textHeight + y + GAP, barWidth, height);
   }
 };
