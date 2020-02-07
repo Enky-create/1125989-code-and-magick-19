@@ -43,18 +43,16 @@ window.renderStatistics = function (ctx, players, times) {
   for (var i = 0; i < players.length; i++) {
     ctx.fillStyle = '#000';
     ctx.fillText(players[i], CLOUD_X + GAP + i * (BAR_GAP + TEXT_WIDTH), CLOUD_Y + BAR_HEIGHT + GAP + FONT_GAP * 3);
-
-    var string = 'hsl(210,' + Math.random() * 100 + '%,50%)';
-    ctx.fillStyle = string;
-    if (players[i] === 'Вы') {
-      ctx.fillStyle = '#f00';
-    }
     var height = (BAR_HEIGHT * times[i]) / maxTime;
     var y = 0;
     if (height < BAR_HEIGHT) {
       y = BAR_HEIGHT - height;
     }
     ctx.fillText(Math.round(times[i]), CLOUD_X + GAP + i * (BAR_GAP + TEXT_WIDTH), textHeight + y + GAP / 2);
+    ctx.fillStyle = 'hsl(210,' + Math.random() * 100 + '%,50%)';
+    if (players[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    }
     ctx.fillRect(CLOUD_X + GAP + i * (BAR_GAP + TEXT_WIDTH), CLOUD_Y + textHeight + y + GAP, barWidth, height);
   }
 };
