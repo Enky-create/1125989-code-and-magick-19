@@ -12,22 +12,23 @@ var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 var getRandomInRange = function (array) {
   var min = 0;
   var max = array.length - 1;
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  var index = Math.floor(Math.random() * (max - min + 1)) + min;
+  return array[index];
 };
 
-var randomWizard = function (name, surname, coatColor, eyesColor) {
+var randomWizard = function () {
   var wizard = {
-    name: names[getRandomInRange(name)],
-    surname: surnames[getRandomInRange(surname)],
-    coatColor: coatColors[getRandomInRange(coatColor)],
-    eyesColor: eyesColors[getRandomInRange(eyesColor)]
+    name: getRandomInRange(names),
+    surname: getRandomInRange(surnames),
+    coatColor: getRandomInRange(coatColors),
+    eyesColor: getRandomInRange(eyesColors)
   };
   return wizard;
 };
 
 var wizardsInHtml = function (similarWizard, fragment, counterOfWizards) {
   for (var i = 0; i < counterOfWizards; i++) {
-    var wizard = randomWizard(names, surnames, coatColors, eyesColors);
+    var wizard = randomWizard();
     var wizardElement = similarWizard.cloneNode(true);
     wizardElement.querySelector('.setup-similar-label').textContent = wizard.name + ' ' + wizard.surname;
     wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
